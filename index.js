@@ -3,7 +3,13 @@ let dataList  = document.getElementById("data-ul");
 
 const getAllData = async ()=>{
     let howOften = document.getElementById("howoften").value;
-    let category = document.getElementById("category").value;
+    let category = document.getElementById("category").selectedOptions;
+    let categoryArray = []
+    for(i=0;i<category.length;i++){
+        categoryArray.push(category[i].label)
+    }
+    let randomCategory = Math.floor(Math.random() * categoryArray.length); 
+    category = categoryArray[randomCategory]; 
     if(howOften == "" || howOften > 10){
         alert("Please enter a number between 1 and 10")
     } else {
