@@ -16,8 +16,7 @@ const getAllData = async ()=>{
         for( i = 0; i<howOften;i++){
             const res =  await fetch("https://v2.jokeapi.dev/joke/"+category);
             const data = await res.json();
-            console.log(data)
-            if (!data){
+            if (data.length === 0){
                 alert("Something was wrong")
             } else{
                 let li1 = document.createElement("li");
@@ -25,12 +24,11 @@ const getAllData = async ()=>{
                 let li3 = document.createElement("li");
                 let hr = document.createElement("hr");
                 if(data.joke == undefined){
-                    li1.innerText = "Frage: "+data.setup;
-                    li2.innerText = "Antowort: "+data.delivery;
+                    li1.innerText = "Frage: "+ data.setup;
+                    li2.innerText = "Antowort: "+ data.delivery;
                 } else {
                     li1.innerText = "Witz: "+data.joke;
-                    li2.innerText = "";
-                    
+                    li2.innerText = "";    
                 }
                 li3.innerText = "Category: "+data.category;
                 dataList.appendChild(li3);
